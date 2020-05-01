@@ -10,9 +10,8 @@
     "@types/node": "^12.6.8",
     "chai": "^4.2.0",
     "chalk": "^2.4.2",
-    "mz": "^2.7.0",
-    "ts-node": "^8.3.0",
-    "typescript": "^3.5.3"
+    "lodash": "^4.17.15",
+    "mz": "^2.7.0"
   },
   "scripts": {
     "0": "ts-node exercises/exercise-00/index.ts",
@@ -31,5 +30,8 @@
     "13": "ts-node exercises/exercise-13/index.ts",
     "14": "ts-node exercises/exercise-14/index.ts",
     "15": "ts-node exercises/exercise-15/index.ts"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.150"
   }
 }
