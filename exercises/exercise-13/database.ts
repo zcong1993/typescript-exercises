@@ -1,7 +1,7 @@
 import { promises as fs } from 'fs'
 import * as _ from 'lodash'
 
-type ValueType = number | string
+type ValueType = string
 
 interface FieldQueryOperator<T = any> {
   $gt?: T
@@ -11,7 +11,7 @@ interface FieldQueryOperator<T = any> {
 }
 
 type FieldQueryAll<T> = {
-  [K in keyof T]: FieldQueryOperator<T[K]>
+  [K in keyof T]: FieldQueryOperator<T[K]> | T[K]
 }
 
 type FieldQuery<T> = Partial<FieldQueryAll<T>>
@@ -126,6 +126,6 @@ export class Database<T> {
       return arr.filter((it) => op.$in?.includes(it[key]))
     }
 
-    throw new Error('not impl op')
+    return arr.filter((it) => it[key] === op)
   }
 }

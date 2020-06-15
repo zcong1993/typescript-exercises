@@ -11,7 +11,7 @@ interface FieldQueryOperator<T = any> {
 }
 
 type FieldQueryAll<T> = {
-  [K in keyof T]: FieldQueryOperator<T[K]>
+  [K in keyof T]: FieldQueryOperator<T[K]> | T[K]
 }
 
 type FieldQuery<T> = Partial<FieldQueryAll<T>>
@@ -168,6 +168,6 @@ export class Database<T> {
     if (op.$in !== undefined) {
       return arr.filter((it) => op.$in?.includes(it[key]))
     }
-    throw new Error('not impl op')
+    return arr.filter((it) => it[key] === op)
   }
 }
